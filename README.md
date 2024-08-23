@@ -19,10 +19,12 @@ To compare two files and generate a report in plain text format, use the followi
 
 Example Output
 ```Setting "common.setting4" was added with value: False```
+
 ```Setting "group1.baz" was updated. From 'bas' to 'bars'```
+
 ```Section "group2" was removed```
 
-Installation
+<!-- Installation
 To install the Difference Calculator, follow these steps:
 
 Clone the repository:
@@ -41,4 +43,4 @@ License
 This project is licensed under the MIT License.
 
 
-Feel free to customize it further to fit your project's needs! If you have any other questions or need more help, just let me know. 😊
+Feel free to customize it further to fit your project's needs! If you have any other questions or need more help, just let me know. 😊 -->
