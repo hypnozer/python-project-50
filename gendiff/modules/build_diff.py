@@ -1,4 +1,19 @@
-from gendiff.modules.parse_files import make_changelog, TYPES_OF_CHANGES
+from gendiff.modules.parse_files import make_changelog
+
+
+TYPES_OF_CHANGES = {
+    "unchanged": "  ",
+    "changed_old": "- ",
+    "changed_new": "+ ",
+    "deleted": "- ",
+    "added": "+ ",
+}
+
+
+def make_string(value):
+    if isinstance(value, bool):
+        return str(value).lower()
+    return value
 
 
 def build_diff(original_file, changed_file):
@@ -9,23 +24,23 @@ def build_diff(original_file, changed_file):
         key = change["key"]
         change_type = change["type"]
         if change_type == "unchanged":
-            value = original_file[key]
+            value = make_string(original_file[key])
             diff_lines.append(
                 f"  {TYPES_OF_CHANGES[change_type]}{key}: {value}")
         elif change_type == "changed":
-            old_value = original_file[key]
-            new_value = changed_file[key]
+            old_value = make_string(original_file[key])
+            new_value = make_string(changed_file[key])
             diff_lines.append(
                 f"  {TYPES_OF_CHANGES['changed_old']}{key}: {old_value}")
             diff_lines.append(
                 f"  {TYPES_OF_CHANGES['changed_new']}{key}: {new_value}")
 
         elif change_type == "deleted":
-            value = original_file[key]
+            value = make_string(original_file[key])
             diff_lines.append(
                 f"  {TYPES_OF_CHANGES[change_type]}{key}: {value}")
         elif change_type == "added":
-            value = changed_file[key]
+            value = make_string(changed_file[key])
             diff_lines.append(
                 f"  {TYPES_OF_CHANGES[change_type]}{key}: {value}")
     diff_lines.append("}")

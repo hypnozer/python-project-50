@@ -13,12 +13,12 @@ TYPES_OF_CHANGES = {
 
 # Ожидаемый результат
 EXPECTED_OUTPUT = """{
-  - follow: False
+  - follow: false
     host: hexlet.io
   - proxy: 123.234.53.22
   - timeout: 50
   + timeout: 20
-  + verbose: True
+  + verbose: true
 }"""
 
 
@@ -36,7 +36,7 @@ def test_build_diff_no_changes():
     changed_file = json.load(open("tests/fixtures/file1.json"))
 
     expected_output = """{
-    follow: False
+    follow: false
     host: hexlet.io
     proxy: 123.234.53.22
     timeout: 50
@@ -76,7 +76,7 @@ def test_build_diff_changed_and_added():
     changed_file = json.load(open("tests/fixtures/file1.json"))
 
     expected_output = """{
-  + follow: False
+  + follow: false
     host: hexlet.io
   + proxy: 123.234.53.22
     timeout: 50

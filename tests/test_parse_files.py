@@ -1,14 +1,5 @@
 from gendiff.modules.parse_files import make_changelog
 
-# Определяем TYPES_OF_CHANGES для тестов
-TYPES_OF_CHANGES = {
-    "unchanged": "  ",
-    "changed_old": "- ",
-    "changed_new": "+ ",
-    "deleted": "- ",
-    "added": "+ ",
-}
-
 
 def test_make_changelog_unchanged():
     original_file = {
