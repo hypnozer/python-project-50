@@ -33,9 +33,11 @@ jobs:
       #   with:
       #     coverageCommand: make test-coverage
       #     debug: true
-      - name: Code Climate Test Reporter
-        uses: aktions/codeclimate-test-reporter@v1
-        with:
-          codeclimate-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
-          command: after-build
+      - name: Run tests with coverage
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        run: |
+          poetry run coverage run -m pytest  # Run tests and collect coverage
+          poetry run coverage xml -o coverage.xml  # Export coverage to XML format
+          poetry run codeclimate-test-reporter < coverage.xml  # Send coverage to Code Climate
 
