@@ -1,4 +1,4 @@
-from gendiff.modules.parse_files import make_changelog
+from gendiff.modules.make_changelog import make_changelog
 
 
 TYPES_OF_CHANGES = {

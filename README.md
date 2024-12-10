@@ -19,7 +19,7 @@ To compare two files and generate a report in plain text format, use the followi
 
 ```gendiff --format plain filepath1.json filepath2.yml```
 
-[![asciicast](https://asciinema.org/a/HyergOiLI1xjp82aPGo9fYJd2.svg)](https://asciinema.org/a/HyergOiLI1xjp82aPGo9fYJd2)
+[![asciicast](https://asciinema.org/a/X0sRtQdNgR0Ai2uSdIP1Z34dk.svg)](https://asciinema.org/a/X0sRtQdNgR0Ai2uSdIP1Z34dk)
 
 Example Output
 ```Setting "common.setting4" was added with value: False```
