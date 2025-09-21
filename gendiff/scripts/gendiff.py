@@ -1,5 +1,6 @@
 import argparse
 import json
+
 from gendiff.core import generate_diff
 
 
