@@ -41,3 +41,5 @@ jobs:
             -Dsonar.projectKey=hypnozer_python-project-50
             -Dsonar.organization=hypnozer
             -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.sources=gendiff
+            -Dsonar.tests=tests
