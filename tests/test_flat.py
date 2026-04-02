@@ -14,7 +14,7 @@ def read_fixture(filename):
         return file.read()
 
 
-@pytest.mark.parametrize("extension", ["json", "yml"])
+@pytest.mark.parametrize("extension", ["json", "yml", "yaml"])
 def test_generate_diff_stylish(extension):
     file1 = os.path.join(TEST_DATA_PATH, f"file1.{extension}")
     file2 = os.path.join(TEST_DATA_PATH, f"file2.{extension}")
