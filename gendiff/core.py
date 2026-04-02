@@ -1,3 +1,6 @@
+from gendiff.parser import parse_data
+
+
 def build_flat_diff(dic1, dic2):
     diff = []
     all_keys = sorted(set(dic1.keys()) | set(dic2.keys()))
@@ -18,7 +21,9 @@ def build_flat_diff(dic1, dic2):
     return diff
 
 
-def generate_diff(data1, data2):
+def generate_diff(filepath1, filepath2):
+    data1 = parse_data(filepath1)
+    data2 = parse_data(filepath2)
     diff = build_flat_diff(data1, data2)
     return render_stylish(diff)
 
