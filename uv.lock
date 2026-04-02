@@ -114,7 +114,7 @@ wheels = [
 ]
 
 [[package]]
-name = "hexlet-code"
+name = "gendiff"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

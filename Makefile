@@ -2,7 +2,7 @@ install:
 	uv sync
 
 run:
-	uv run hexlet-python-package
+	uv run gendiff
 
 test:
 	uv run pytest

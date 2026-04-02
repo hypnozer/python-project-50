@@ -25,7 +25,7 @@ def generate_diff(data1, data2):
 
 def fmt_value(value):
     if value is None:
-        return "Null"
+        return "null"
     if isinstance(value, bool):
         if value:
             return "true"
@@ -41,15 +41,15 @@ def render_stylish(diff):
         return f"  {prefix}{key}: {fmt_value(value)}"
 
     for node in diff:
-        type = node["type"]
+        node_type = node["type"]
         key = node["key"]
-        if type == "unchanged":
+        if node_type == "unchanged":
             lines.append(line("  ", key, node["value"]))
-        elif type == "removed":
+        elif node_type == "removed":
             lines.append(line("- ", key, node["value"]))
-        elif type == "added":
+        elif node_type == "added":
             lines.append(line("+ ", key, node["value"]))
-        elif type == "changed":
+        elif node_type == "changed":
             lines.append(line("- ", key, node["old"]))
             lines.append(line("+ ", key, node["new"]))
     lines.append("}")
