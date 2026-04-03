@@ -13,6 +13,10 @@ The utility supports:
 - plain output format
 - json output format
 
+## Demonstration
+
+[![asciicast](https://asciinema.org/a/aeWRBhPTQImRxAzo.svg)](https://asciinema.org/a/aeWRBhPTQImRxAzo)
+
 ## Requirements
 
 - Python 3.10+
