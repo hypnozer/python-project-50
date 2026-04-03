@@ -1,61 +1,45 @@
-from gendiff.parser import parse_data
+from .formatters.stylish import render_stylish
+from .parser import parse_data
 
 
-def build_flat_diff(dic1, dic2):
+def build_diff(data1, data2):
     diff = []
-    all_keys = sorted(set(dic1.keys()) | set(dic2.keys()))
+    all_keys = sorted(set(data1.keys()) | set(data2.keys()))
     for key in all_keys:
-        if key not in dic1:
-            diff.append({"key": key, "type": "added", "value": dic2[key]})
-        elif key not in dic2:
-            diff.append({"key": key, "type": "removed", "value": dic1[key]})
-        elif dic1[key] != dic2[key]:
+        if key not in data1:
+            diff.append({'key': key, 'type': 'added', 'value': data2[key]})
+        elif key not in data2:
+            diff.append({'key': key, 'type': 'removed', 'value': data1[key]})
+        elif isinstance(data1[key], dict) and isinstance(data2[key], dict):
             diff.append({
-                "key": key,
-                "type": "changed",
-                "old": dic1[key],
-                "new": dic2[key]
+                'key': key,
+                'type': 'nested',
+                'children': build_diff(data1[key], data2[key])
+                })
+        elif data1[key] == data2[key]:
+            diff.append({
+                'key': key,
+                'type': 'unchanged',
+                'value': data1[key]
                 })
         else:
-            diff.append({"key": key, "type": "unchanged", "value": dic1[key]})
+            diff.append({
+                'key': key,
+                'type': 'changed',
+                'old': data1[key],
+                'new': data2[key]
+                })
     return diff
 
 
-def generate_diff(filepath1, filepath2):
+def generate_diff(filepath1, filepath2, format_name='stylish'):
+    formatters = {
+        'stylish': render_stylish
+        }
+    formatter = formatters.get(format_name)
+    if formatter is None:
+        raise ValueError(f'Unsupported format: {format_name}')
     data1 = parse_data(filepath1)
     data2 = parse_data(filepath2)
-    diff = build_flat_diff(data1, data2)
-    return render_stylish(diff)
-
-
-def fmt_value(value):
-    if value is None:
-        return "null"
-    if isinstance(value, bool):
-        if value:
-            return "true"
-        else:
-            return "false"
-    return str(value)
-
-
-def render_stylish(diff):
-    lines = ["{"]
-
-    def line(prefix, key, value):
-        return f"  {prefix}{key}: {fmt_value(value)}"
-
-    for node in diff:
-        node_type = node["type"]
-        key = node["key"]
-        if node_type == "unchanged":
-            lines.append(line("  ", key, node["value"]))
-        elif node_type == "removed":
-            lines.append(line("- ", key, node["value"]))
-        elif node_type == "added":
-            lines.append(line("+ ", key, node["value"]))
-        elif node_type == "changed":
-            lines.append(line("- ", key, node["old"]))
-            lines.append(line("+ ", key, node["new"]))
-    lines.append("}")
-    return "\n".join(lines)
+    diff = build_diff(data1, data2)
+    return formatter(diff)
