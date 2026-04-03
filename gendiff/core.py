@@ -1,3 +1,4 @@
+from .formatters.json import render_json
 from .formatters.plain import render_plain
 from .formatters.stylish import render_stylish
 from .parser import parse_data
@@ -36,7 +37,8 @@ def build_diff(data1, data2):
 def generate_diff(filepath1, filepath2, format_name='stylish'):
     formatters = {
         'stylish': render_stylish,
-        'plain': render_plain
+        'plain': render_plain,
+        'json': render_json
         }
     formatter = formatters.get(format_name)
     if formatter is None:
