@@ -5,5 +5,4 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hypnozer_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hypnozer_python-project-50)
 
-[![asciicast](https://asciinema.org/a/O89sSqtYrgw1X9lt.svg)](https://asciinema.org/a/O89sSqtYrgw1X9lt)
-
+[![asciicast](https://asciinema.org/a/lkUqPzRsJ5iSV9kS.svg)](https://asciinema.org/a/lkUqPzRsJ5iSV9kS)
