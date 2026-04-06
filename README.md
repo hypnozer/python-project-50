@@ -2,6 +2,7 @@
 [![Actions Status](https://github.com/hypnozer/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/hypnozer/python-project-50/actions)
 [![Python CI](https://github.com/hypnozer/python-project-50/actions/workflows/pyci.yml/badge.svg)](https://github.com/hypnozer/python-project-50/actions/workflows/pyci.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hypnozer_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hypnozer_python-project-50)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=hypnozer_python-project-50&metric=coverage)](https://sonarcloud.io/summary/new_code?id=hypnozer_python-project-50)
 
 # Difference Calculator
 
